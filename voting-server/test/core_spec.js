@@ -102,43 +102,31 @@ describe('Application Logic', () => {
     describe('Vote', () => {
         it('creates a tally for the voted entry', () => {
             const state = Map({
-                vote: Map({
-                    pair: List.of('Homer', 'Marge')
-                }),
-                entries: List()
+                pair: List.of('Homer', 'Marge')
             });
             const nextState = vote(state, 'Homer');
             expect(nextState).to.equal(Map({
-                vote: Map({
-                    pair: List.of('Homer', 'Marge'),
-                    tally: Map({
-                        'Homer': 1
-                    })
-                }),
-                entries: List()
+                pair: List.of('Homer', 'Marge'),
+                tally: Map({
+                    'Homer': 1
+                })
             }));
         });
         it('adds to existing tally for the voted entry', () => {
             const state = Map({
-                vote: Map({
-                    pair: List.of('Homer', 'Marge'),
-                    tally: Map({
-                        'Homer': 3,
-                        'Marge': 2
-                    })
-                }),
-                entries: List()
+                pair: List.of('Homer', 'Marge'),
+                tally: Map({
+                    'Homer': 3,
+                    'Marge': 2
+                })
             });
             const nextState = vote(state, 'Homer');
             expect(nextState).to.equal(Map({
-                vote: Map({
-                    pair: List.of('Homer', 'Marge'),
-                    tally: Map({
-                        'Homer': 4,
-                        'Marge': 2
-                    })
-                }),
-                entries: List()
+                pair: List.of('Homer', 'Marge'),
+                tally: Map({
+                    'Homer': 4,
+                    'Marge': 2
+                })
             }));
         });
     });

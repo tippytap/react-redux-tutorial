@@ -22,13 +22,13 @@ export function next(state){
     }
 }
 
-export function vote(state, entry){
+export function vote(voteState, entry){
     // this is drilling down vote -> tally -> Homer
     // if key is missing, create a new Map
     // if final key has no value, give it a zero
     // finally, increment the tally if everything worked
-    return state.updateIn(
-        ['vote', 'tally', entry],
+    return voteState.updateIn(
+        ['tally', entry],
         0,
         tally => tally + 1
     );
